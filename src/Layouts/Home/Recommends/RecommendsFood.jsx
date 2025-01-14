@@ -1,9 +1,9 @@
+import useMenu from "../../../Components/Hooks/useMenu";
 import SectionsTitle from "../../../Components/SectionTitle/SectionsTitle";
 import ItemCard from "../../../Components/SharedCards/ItemCard";
-import useFoodCard from "../../../Components/Hooks/useFoodCard";
 
 const RecommendsFood = () => {
-    const foodItems = useFoodCard()
+    const foodItems = useMenu()
     const recommendFoods = foodItems.filter(item => item.category === "offered")
 
     return (

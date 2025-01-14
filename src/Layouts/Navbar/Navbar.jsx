@@ -1,7 +1,20 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import useAuthContext from "../../Components/Hooks/useAuthContext";
 
 const Navbar = () => {
+  const {user , logout} = useAuthContext()
+  const navigate = useNavigate()
 
+  const handleLogout = () => {
+    logout()
+    .then(result => {
+      const user = result.user
+      console.log(user);
+      navigate('/login')
+  }).then(err => {
+      console.log('ERROR', err);
+  })
+  }
 
     const navOptions = <>
         <li><NavLink className="uppercase font-bold font-inter" to={'/'}>Home</NavLink> </li>
@@ -9,6 +22,7 @@ const Navbar = () => {
         {/* <li><NavLink className="uppercase font-bold font-inter" to={'/dashboard'}>DASHBOARD</NavLink> </li> */}
         <li><NavLink className="uppercase font-bold font-inter" to={'/menu'}>Our Menu</NavLink> </li>
         <li><NavLink className="uppercase font-bold font-inter" to={'/order/dessert'}>Order</NavLink> </li>
+        <li> {user?.email ? <NavLink onClick={handleLogout} className="uppercase font-bold font-inter" to={'/login'}>Logout</NavLink> : <NavLink className="uppercase font-bold font-inter" to={'/login'}>Login</NavLink>} </li>
     </>
 
   return (
