@@ -8,7 +8,7 @@ const Navbar = () => {
         {/* <li><NavLink className="uppercase font-bold font-inter" to={'/contact'}>Contact Us</NavLink> </li> */}
         {/* <li><NavLink className="uppercase font-bold font-inter" to={'/dashboard'}>DASHBOARD</NavLink> </li> */}
         <li><NavLink className="uppercase font-bold font-inter" to={'/menu'}>Our Menu</NavLink> </li>
-        {/* <li><NavLink className="uppercase font-bold font-inter" to={'/order'}>Order</NavLink> </li> */}
+        <li><NavLink className="uppercase font-bold font-inter" to={'/order/dessert'}>Order</NavLink> </li>
     </>
 
   return (
