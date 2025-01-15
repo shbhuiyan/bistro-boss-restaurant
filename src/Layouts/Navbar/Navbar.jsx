@@ -1,9 +1,12 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuthContext from "../../Components/Hooks/useAuthContext";
+import { IoCart } from "react-icons/io5";
+import useCart from "../../Components/Hooks/useCart";
 
 const Navbar = () => {
   const {user , logout} = useAuthContext()
   const navigate = useNavigate()
+  const {cart} = useCart()
 
   const handleLogout = () => {
     logout()
@@ -55,11 +58,12 @@ const Navbar = () => {
         </div>
         <Link to={'/'} className="font-cinzel"><p className="text-xl font-bold uppercase">Bistro Boss</p><p className="font-medium uppercase tracking-[3px] max-md:hidden">Restaurant</p></Link>
       </div>
-      <div className="navbar-end hidden lg:flex">
+      <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
          {navOptions}
         </ul>
       </div>
+      <p className="navbar-end relative"><IoCart className="text-5xl font-bold" /> <span className="rounded-badge bg-red-500 absolute px-1 -top-1">+{cart.length}</span> </p>
     </div>
   );
 };
